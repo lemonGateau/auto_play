@@ -6,12 +6,12 @@ def main():
     aapo = am.AapoManager(adbpath)
 
     aapo.start('com.supercell.clashroyale/com.supercell.titan.GameApp')
-    aapo.sleep(20)
+    aapo.sleep(15)
 
     cards_x  = [ 350 , 550 , 750 , 950 ]
     cards_y  = [ 2104, 2104, 2104, 2104]
     stages_x = [ 197 , 408 , 677 , 987 ]
-    stages_y = [ 1356, 1374, 1203, 1105]
+    stages_y = [ 1356, 1374, 1203, 1305]
 
     
     for i in range(1, 25):
@@ -22,16 +22,19 @@ def main():
         aapo.touchPos(780, 1626)
         aapo.sleep(10)
 
+        j = 0
         while True:
-            if aapo.chkImg('./template/stage_clear.png'):
-                aapo.touchImg('./template/stage_clear.png')
+            aapo.screencap()
+            if aapo.chkImg('C:\\Users\\manab\\github_\\auto_play\\template\\stage_ok.jpg'):
+                aapo.touchImg('C:\\Users\\manab\\github_\\auto_play\\template\\stage_ok.jpg')
                 break
 
             r = j%4
+            j += 1
             aapo.swipeTouchPos(cards_x[r], cards_y[r], stages_x[r]+j, stages_y[r]+j, 300)
-            aapo.sleep(2 + r)
+            aapo.sleep(r)
 
-        aapo.sleep(i*5)
+        aapo.sleep(10)
 
     aapo.end('com.supercell.clashroyale')
 
