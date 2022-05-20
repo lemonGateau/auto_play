@@ -23,9 +23,9 @@ class Controller:
         self.aapo.screencap()
 
     def may_generate_character(self, file_name, to_, swipe_ms=300):
-        res, from_= self.aapo.chkImg2(self.template_dict + "\\" + file_name)
+        res, x, y= self.aapo.chkImg2(self.template_dict + "\\" + file_name)
         if res:
-            self.generate_character(from_, to_, swipe_ms)
+            self.generate_character((x, y), to_, swipe_ms)
         return res
 
     def generate_character(self, from_, to_, swipe_ms=300):

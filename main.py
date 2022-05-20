@@ -21,7 +21,6 @@ def main():
     balloon.set_pos((35, 1100))
     knight.set_pos(stage.get_right_bridge())
     dark_prince.set_pos(stage.get_right_bridge())
-    giant.set_pos(stage.get_random_pos())
 
     specific_char = [miner, balloon, knight, rocket_gunner]
 
@@ -43,7 +42,7 @@ def main():
 
             # 画像なしの場合、ランダムカード召喚
             card_pos = stage.get_card_pos(random.randint(0, 3))
-            ctr.generate_character(card_pos, char.get_pos())
+            ctr.generate_character(card_pos, stage.get_random_pos())
 
             ctr.sleep(1)
 
