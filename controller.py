@@ -14,7 +14,7 @@ class Controller:
     def start_1vs1(self):
         # パーティ
         self.aapo.touchPos(760, 1575)
-        self.sleep(3)
+        self.sleep(5)
         # 1対1エンタメ
         self.aapo.touchPos(780, 1626)
         self.sleep(10)
