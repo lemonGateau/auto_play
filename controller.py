@@ -3,26 +3,27 @@ from character import Character
 
 
 class Controller:
-    def __init__(self, template_dict):
-        self.aapo = am.AapoManager('C:\\Users\\manab\\platform-tools\\')
+    def __init__(self, adb_path, template_dict):
+        self.aapo = am.AapoManager(adb_path)
+
         self.template_dict = template_dict
 
     def activate_app(self):
         self.aapo.start('com.supercell.clashroyale/com.supercell.titan.GameApp')
-        self.sleep(10)
+        self.sleep(30)
 
     def start_1vs1(self):
         # パーティ
-        self.aapo.touchPos(760, 1575)
+        self.aapo.touchPos(760, 1550)
         self.sleep(5)
         # 1対1エンタメ
-        self.aapo.touchPos(780, 1626)
-        self.sleep(10)
+        self.aapo.touchPos(770, 1590)
+        self.sleep(5)
 
     def screencap(self):
         self.aapo.screencap()
 
-    def may_generate_character(self, file_name, to_, swipe_ms=300):
+    def may_generate_character(self, file_name, to_, swipe_ms=400):
         res, x, y= self.aapo.chkImg2(self.template_dict + "\\" + file_name)
         if res:
             self.generate_character((x, y), to_, swipe_ms)
